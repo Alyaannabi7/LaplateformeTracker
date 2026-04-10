@@ -16,4 +16,10 @@ public class Student {
         this.course = course;
 
     }
+
+    public String getFirst_name() {return first_name;}
+    public String getLast_name() {return last_name;}
+    public int getAge() {return age;}
+    public double getGrade() {return grade;}
+    public String getCourse() {return course;}
 }
