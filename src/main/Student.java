@@ -1,25 +1,39 @@
 package main;
 
 public class Student {
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
     private int age;
     private double grade;
     private String course;
 
-    public Student(String first_name, String last_name, int age, double grade, String course){
+    public Student(String firstName, String lastName, int age, double grade, String course){
         
-        this.first_name = first_name;
-        this.last_name = last_name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.age = age;
         this.grade = grade;
         this.course = course;
 
     }
 
-    public String getFirst_name() {return first_name;}
-    public String getLast_name() {return last_name;}
+    public String getFirstName() {return firstName;}
+    public String getLastName() {return lastName;}
     public int getAge() {return age;}
     public double getGrade() {return grade;}
     public String getCourse() {return course;}
+
+    public void setGrade(double grade){
+        if (grade >= 0 && grade <=20) {
+            this.grade = grade;
+        }
+    }
+
+    @Override
+    public String toString() {
+        return firstName + " " + lastName +
+                "Age: " + age +
+                " Matiere: " + course +
+                " Note: " + grade;
+    }
 }
