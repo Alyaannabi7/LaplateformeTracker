@@ -13,6 +13,8 @@ public class GradeManager {
             System.out.println(s);
         }
     }
+
+    // moyenne général de la classe
     public double averageGrade() {
         if (students.isEmpty())
             return 0;

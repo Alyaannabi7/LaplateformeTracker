@@ -29,6 +29,7 @@ public class Student {
         }
     }
 
+    // a modifier quand on aura l'interface
     @Override
     public String toString() {
         return firstName + " " + lastName +
