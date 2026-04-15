@@ -2,7 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
-public class GradeManager {
+public class StudentManager {
     private ArrayList<Student> students = new ArrayList<>();
 
     public void addStudent(Student student) {
@@ -13,6 +13,12 @@ public class GradeManager {
             System.out.println(s);
         }
     }
+    public void remStudent(Student student) {
+        students.remove(student);
+    }
+    // public void searchStudent(Student student) {
+    //     students.sort(studentID);
+    // }
 
     // moyenne général de la classe
     public double averageGrade() {
@@ -23,5 +29,16 @@ public class GradeManager {
             sum += s.getGrade();
         }
         return sum /students.size();
+    }
+
+    public int averageAge() {
+        if (students.isEmpty())
+            return 0;
+        int sum = 0;
+        for (Student s : students) {
+            sum += s.getAge();
+        }
+        return sum /students.size();
+
     }
 }

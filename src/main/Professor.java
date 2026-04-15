@@ -1,22 +1,26 @@
 package main;
 
 public class Professor {
+    private int professorID;
     private String firstName;
     private String lastName;
     private int age;
-    private String profession;
+    private String course;
 
-    public Professor(String firstName, String lastName, int age, String profession){
+    public Professor(int professorID, String firstName, String lastName, int age, String course){
+
+        this.professorID = professorID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
-        this.profession = profession;
+        this.course = course;
     }
 
+    public int getProfessorID() {return professorID;}
     public String getFirstName() {return firstName;}
     public String getLastName() {return lastName;}
     public int getAge() {return age;}
-    public String getProfession() {return profession;}
+    public String getCourse() {return course;}
 
     // a modifier quand on aura l'interface
     @Override
@@ -24,6 +28,6 @@ public class Professor {
         return firstName + " " +
                 lastName +
                 "Age: " + age +
-                " Matiere: " + profession;
+                " Matiere: " + course;
     }
 }

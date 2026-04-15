@@ -1,14 +1,16 @@
 package main;
 
 public class Student {
+    private int studentID;
     private String firstName;
     private String lastName;
     private int age;
     private double grade;
     private String course;
 
-    public Student(String firstName, String lastName, int age, double grade, String course){
+    public Student(int studentID, String firstName, String lastName, int age, double grade, String course){
         
+        this.studentID = studentID;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -16,7 +18,7 @@ public class Student {
         this.course = course;
 
     }
-
+    public int getStudentID() {return studentID;}
     public String getFirstName() {return firstName;}
     public String getLastName() {return lastName;}
     public int getAge() {return age;}
