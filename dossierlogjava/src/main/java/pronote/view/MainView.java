@@ -20,7 +20,7 @@ public class MainView extends StackPane {
         // === BACKGROUND IMAGE ===
         Image bgImage = new Image(
             Objects.requireNonNull(
-                getClass().getResourceAsStream("/images/logspace3.png"),
+                getClass().getResourceAsStream("/images/doorspace.jpg"),
                 "Background image not found"
             )
         );
@@ -145,7 +145,7 @@ public class MainView extends StackPane {
 
         // Form box pinned to bottom center
         BorderPane.setAlignment(formBox, Pos.CENTER);
-        BorderPane.setMargin(formBox, new Insets(0, 0, 60, 0));
+        BorderPane.setMargin(formBox, new Insets(0, 0, 460, 0));
         layout.setBottom(formBox);
 
         // Stack: background image + layout on top

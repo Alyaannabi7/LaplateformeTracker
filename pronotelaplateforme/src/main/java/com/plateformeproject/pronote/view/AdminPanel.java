@@ -83,13 +83,26 @@ public class AdminPanel extends VBox {
         VBox profsPanel = createManagementPanel("Profs:",
                 new String[]{"nom", "prénom", "mail", "mot de passe", "matière enseignée"});
 
-        VBox centerArea = new VBox(20);
-        centerArea.setAlignment(Pos.CENTER);
+        // ==================== ZONE CENTRALE ====================
+        VBox centerArea = new VBox(30);
+        centerArea.setAlignment(Pos.TOP_CENTER);
+
+        // Espace vide en haut pour remonter le bouton
+        Region topSpacer = new Region();
+        topSpacer.setPrefHeight(40);        // ← Change cette valeur pour monter/descendre le bouton
 
         Button searchButton = new Button("Recherche");
         searchButton.setStyle("-fx-font-size: 22px; -fx-padding: 15 80;");
 
-        centerArea.getChildren().add(searchButton);
+        VBox resultsArea = new VBox(10);
+        resultsArea.setPrefHeight(280);
+        resultsArea.setStyle("-fx-background-color: rgba(255,255,255,0.03); " +
+                "-fx-border-color: #00f7ff; " +
+                "-fx-border-width: 1; " +
+                "-fx-border-radius: 12;");
+
+        centerArea.getChildren().addAll(topSpacer, searchButton, resultsArea);
+        // =======================================================
 
         VBox studentsPanel = createManagementPanel("Eleves:",
                 new String[]{"nom", "prénom", "mail", "mot de passe", "matière enseignée"});
@@ -97,7 +110,6 @@ public class AdminPanel extends VBox {
         mainContent.getChildren().addAll(profsPanel, centerArea, studentsPanel);
         this.getChildren().add(mainContent);
     }
-
     private VBox createManagementPanel(String title, String[] fields) {
         VBox panel = new VBox(12);
         panel.setPrefWidth(320);
