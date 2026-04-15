@@ -1,0 +1,45 @@
+.root {
+    -fx-font-family: 'Rajdhani', system-ui, sans-serif;
+}
+
+.dashboard {
+    -fx-background-color: transparent;
+}
+
+/* Main panel style - semi-transparent with cyan neon border */
+.panel {
+    -fx-background-color: rgba(8, 25, 48, 0.88);
+    -fx-border-color: #00f7ff;
+    -fx-border-width: 2.5px;
+    -fx-border-radius: 12px;
+    -fx-background-radius: 12px;
+    -fx-effect: dropshadow(gaussian, #00f7ff, 22, 0.65, 0, 0);
+    -fx-padding: 18px;
+}
+
+/* Neon title style */
+.neon-title {
+    -fx-font-family: 'Orbitron', sans-serif;
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00f7ff;
+    -fx-effect: dropshadow(gaussian, #00f7ff, 25, 0.9, 0, 0);
+    -fx-alignment: center;
+}
+
+/* Regular neon text */
+.neon-text {
+    -fx-text-fill: #b0f8ff;
+    -fx-font-size: 15.5px;
+}
+
+/* Red alert style */
+.alert-red {
+    -fx-border-color: #ff3366;
+    -fx-effect: dropshadow(gaussian, #ff3366, 25, 0.75, 0, 0);
+}
+
+/* Strong glow effect */
+.glow-cyan {
+    -fx-effect: dropshadow(gaussian, #00ffff, 35, 0.9, 0, 0);
+}

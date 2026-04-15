@@ -1,0 +1,4 @@
+pronote\main\MainApp.class
+pronote\database\DatabaseConnection.class
+pronote\controller\LoginController.class
+pronote\view\MainView.class
