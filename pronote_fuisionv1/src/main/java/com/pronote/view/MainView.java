@@ -1,4 +1,4 @@
-package pronote.view;
+package com.pronote.view;
 
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -9,7 +9,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-import pronote.controller.LoginController;
+import com.pronote.controller.LoginController;
 
 import java.util.Objects;
 
