@@ -171,10 +171,10 @@ public class MainView extends StackPane {
 
         // Choose panel based on role
         javafx.scene.layout.Region panel = switch (role) {
-            case "admin"   -> new com.plateformeproject.pronote.view.AdminPanel();
-            case "prof"    -> new com.plateformeproject.pronote.view.ProfessorPanel();
-            case "student" -> new com.plateformeproject.pronote.view.StudentPanel(); // à créer
-            default        -> new com.plateformeproject.pronote.view.AdminPanel();
+            case "admin"   -> new AdminPanel();
+            case "prof"    -> new ProfessorPanel();
+            case "student" -> new StudentPanel(); // à créer
+            default        -> new AdminPanel();
         };
 
         // Layout

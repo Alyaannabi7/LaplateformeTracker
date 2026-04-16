@@ -1,6 +1,6 @@
-package pronote.controller;
+package com.pronote.controller;
 
-import pronote.database.DatabaseConnection;
+import com.pronote.database.DatabaseConnection;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
