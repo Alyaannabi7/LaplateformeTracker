@@ -9,7 +9,7 @@ public class DatabaseConnection {
     // PostgreSQL connection settings
     private static final String URL      = "jdbc:postgresql://localhost:5432/pronote_db";
     private static final String USER     = "postgres";
-    private static final String PASSWORD = "tu mets ton mdp sql icii "; // ← ton mot de passe
+    private static final String PASSWORD = "azertyDU06!123456789"; // ← ton mot de passe
 
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);

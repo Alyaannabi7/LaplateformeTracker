@@ -1,5 +1,6 @@
 package com.pronote.view;
-
+import com.pronote.main.MainApp;
+import java.util.Objects;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -74,6 +75,15 @@ public class AdminPanel extends VBox {
             "-fx-border-color: #00f7ff; " +
             "-fx-border-width: 2;"
         );
+        menuButton.setOnAction(e -> javafx.application.Platform.runLater(() -> {
+            MainApp.getScene().getStylesheets().clear();
+            MainApp.getScene().getStylesheets().add(
+                    Objects.requireNonNull(
+                            getClass().getResource("/styles/neon-dashboard.css")
+                    ).toExternalForm()
+            );
+            MainApp.switchView(new MainView(), "EDUNAV-1 - Secure Access");
+        }));
 
         header.getChildren().addAll(adminInfo, spacer, menuButton);
         this.getChildren().add(header);

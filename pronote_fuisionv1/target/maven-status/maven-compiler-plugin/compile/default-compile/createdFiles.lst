@@ -4,4 +4,5 @@ com\pronote\database\DatabaseConnection.class
 com\pronote\view\StudentPanel.class
 com\pronote\controller\LoginController.class
 com\pronote\view\ProfessorPanel.class
+com\pronote\view\TransitionView.class
 com\pronote\view\AdminPanel.class
