@@ -1,4 +1,6 @@
+com\pronote\controller\AdminController.class
 com\pronote\view\MainView.class
+com\pronote\model\Professor.class
 com\pronote\model\Student.class
 com\pronote\main\MainApp.class
 com\pronote\database\DatabaseConnection.class

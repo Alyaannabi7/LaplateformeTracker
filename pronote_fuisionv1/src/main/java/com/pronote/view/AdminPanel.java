@@ -1,19 +1,19 @@
 package com.pronote.view;
+
+import com.pronote.controller.AdminController;
 import com.pronote.main.MainApp;
-import java.util.Objects;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
-import javafx.scene.layout.Region;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.*;
+import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 
+import java.util.Objects;
+
 public class AdminPanel extends VBox {
+
+    private final AdminController controller = new AdminController();
 
     public AdminPanel() {
         setStyle();
@@ -30,14 +30,13 @@ public class AdminPanel extends VBox {
         this.setSpacing(30);
         this.setPadding(new Insets(35));
         this.setAlignment(Pos.TOP_CENTER);
-
         this.setStyle(
-            "-fx-background-color: rgba(8, 25, 48, 0.15); " +
-            "-fx-border-color: #00f7ff; " +
-            "-fx-border-width: 3px; " +
-            "-fx-border-radius: 20; " +
-            "-fx-background-radius: 20; " +
-            "-fx-effect: dropshadow(gaussian, #00f7ff, 35, 0.75, 0, 0);"
+                "-fx-background-color: rgba(8, 25, 48, 0.15); " +
+                        "-fx-border-color: #00f7ff; " +
+                        "-fx-border-width: 3px; " +
+                        "-fx-border-radius: 20; " +
+                        "-fx-background-radius: 20; " +
+                        "-fx-effect: dropshadow(gaussian, #00f7ff, 35, 0.75, 0, 0);"
         );
     }
 
@@ -46,7 +45,6 @@ public class AdminPanel extends VBox {
         header.setAlignment(Pos.CENTER);
         header.setPadding(new Insets(0, 0, 20, 0));
 
-        // Admin info (left)
         VBox adminInfo = new VBox(6);
         adminInfo.setAlignment(Pos.CENTER_LEFT);
 
@@ -61,19 +59,18 @@ public class AdminPanel extends VBox {
 
         adminInfo.getChildren().addAll(adminTitle, nameLabel, preLabel);
 
-        // Spacer
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        // Menu button (right)
+        // Menu button — back to login
         Button menuButton = new Button("Menu");
         menuButton.setStyle(
-            "-fx-font-size: 18px; " +
-            "-fx-padding: 12 40; " +
-            "-fx-background-color: #0000cc; " +
-            "-fx-text-fill: white; " +
-            "-fx-border-color: #00f7ff; " +
-            "-fx-border-width: 2;"
+                "-fx-font-size: 18px; " +
+                        "-fx-padding: 12 40; " +
+                        "-fx-background-color: #0000cc; " +
+                        "-fx-text-fill: white; " +
+                        "-fx-border-color: #00f7ff; " +
+                        "-fx-border-width: 2;"
         );
         menuButton.setOnAction(e -> javafx.application.Platform.runLater(() -> {
             MainApp.getScene().getStylesheets().clear();
@@ -93,9 +90,8 @@ public class AdminPanel extends VBox {
         HBox mainContent = new HBox(50);
         mainContent.setAlignment(Pos.CENTER);
 
-        // Left - Profs management panel
-        VBox profsPanel = createManagementPanel("Profs:",
-                new String[]{"nom", "prénom", "mail", "mot de passe", "matière enseignée"});
+        // Left - Profs panel with DB actions
+        VBox profsPanel = createManagementPanel("Profs:", true);
 
         // Center - Search area
         VBox centerArea = new VBox(30);
@@ -110,29 +106,28 @@ public class AdminPanel extends VBox {
         VBox resultsArea = new VBox(10);
         resultsArea.setPrefHeight(280);
         resultsArea.setStyle(
-            "-fx-background-color: rgba(255,255,255,0.03); " +
-            "-fx-border-color: #00f7ff; " +
-            "-fx-border-width: 1; " +
-            "-fx-border-radius: 12;"
+                "-fx-background-color: rgba(255,255,255,0.03); " +
+                        "-fx-border-color: #00f7ff; " +
+                        "-fx-border-width: 1; " +
+                        "-fx-border-radius: 12;"
         );
 
         centerArea.getChildren().addAll(topSpacer, searchButton, resultsArea);
 
-        // Right - Students management panel
-        VBox studentsPanel = createManagementPanel("Eleves:",
-                new String[]{"nom", "prénom", "mail", "mot de passe", "filière"});
+        // Right - Students panel with DB actions
+        VBox studentsPanel = createManagementPanel("Eleves:", false);
 
         mainContent.getChildren().addAll(profsPanel, centerArea, studentsPanel);
         this.getChildren().add(mainContent);
     }
 
-    private VBox createManagementPanel(String title, String[] fields) {
+    private VBox createManagementPanel(String title, boolean isProf) {
         VBox panel = new VBox(12);
         panel.setPrefWidth(320);
         panel.setStyle(
-            "-fx-background-color: rgba(8, 25, 48, 0.92); " +
-            "-fx-padding: 25; " +
-            "-fx-border-radius: 16;"
+                "-fx-background-color: rgba(8, 25, 48, 0.92); " +
+                        "-fx-padding: 25; " +
+                        "-fx-border-radius: 16;"
         );
 
         Label panelTitle = new Label(title);
@@ -141,16 +136,41 @@ public class AdminPanel extends VBox {
         panel.getChildren().add(panelTitle);
 
         // Input fields
-        for (String field : fields) {
-            TextField tf = new TextField();
-            tf.setPromptText(field);
-            tf.setStyle(
+        TextField firstNameField = new TextField();
+        firstNameField.setPromptText("prénom");
+
+        TextField lastNameField = new TextField();
+        lastNameField.setPromptText("nom");
+
+        TextField emailField = new TextField();
+        emailField.setPromptText("mail");
+
+        TextField passwordField = new TextField();
+        passwordField.setPromptText("mot de passe");
+
+        TextField subjectField = new TextField();
+        subjectField.setPromptText(isProf ? "matière enseignée" : "filière");
+
+        String fieldStyle =
                 "-fx-background-color: rgba(255,255,255,0.07); " +
-                "-fx-text-fill: white; " +
-                "-fx-prompt-text-fill: #777777;"
-            );
-            panel.getChildren().add(tf);
-        }
+                        "-fx-text-fill: white; " +
+                        "-fx-prompt-text-fill: #777777;";
+
+        firstNameField.setStyle(fieldStyle);
+        lastNameField.setStyle(fieldStyle);
+        emailField.setStyle(fieldStyle);
+        passwordField.setStyle(fieldStyle);
+        subjectField.setStyle(fieldStyle);
+
+        panel.getChildren().addAll(
+                firstNameField, lastNameField,
+                emailField, passwordField, subjectField
+        );
+
+        // Feedback label
+        Label feedback = new Label();
+        feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #00f7ff;");
+        panel.getChildren().add(feedback);
 
         // Action buttons
         HBox actionButtons = new HBox(15);
@@ -161,6 +181,64 @@ public class AdminPanel extends VBox {
 
         addBtn.setStyle("-fx-background-color: #00cc66; -fx-text-fill: white; -fx-padding: 8 20;");
         deleteBtn.setStyle("-fx-background-color: #ff3366; -fx-text-fill: white; -fx-padding: 8 20;");
+
+        // Add action
+        addBtn.setOnAction(e -> {
+            String fn  = firstNameField.getText().trim();
+            String ln  = lastNameField.getText().trim();
+            String em  = emailField.getText().trim();
+            String pw  = passwordField.getText().trim();
+            String sub = subjectField.getText().trim();
+
+            // Validate fields
+            if (fn.isEmpty() || ln.isEmpty() || em.isEmpty() || pw.isEmpty() || sub.isEmpty()) {
+                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #ff4466;");
+                feedback.setText("⚠️ Remplis tous les champs");
+                return;
+            }
+
+            boolean success = isProf
+                    ? controller.addProfessor(fn, ln, em, pw, sub)
+                    : controller.addStudent(fn, ln, em, pw, sub);
+
+            if (success) {
+                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #00cc66;");
+                feedback.setText("✅ Ajouté avec succès");
+                // Clear fields
+                firstNameField.clear();
+                lastNameField.clear();
+                emailField.clear();
+                passwordField.clear();
+                subjectField.clear();
+            } else {
+                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #ff4466;");
+                feedback.setText("❌ Erreur lors de l'ajout");
+            }
+        });
+
+        // Delete action — uses email as identifier
+        deleteBtn.setOnAction(e -> {
+            String em = emailField.getText().trim();
+
+            if (em.isEmpty()) {
+                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #ff4466;");
+                feedback.setText("⚠️ Email requis pour supprimer");
+                return;
+            }
+
+            boolean success = isProf
+                    ? controller.deleteProfessor(em)
+                    : controller.deleteStudent(em);
+
+            if (success) {
+                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #00cc66;");
+                feedback.setText("✅ Supprimé avec succès");
+                emailField.clear();
+            } else {
+                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #ff4466;");
+                feedback.setText("❌ Erreur lors de la suppression");
+            }
+        });
 
         actionButtons.getChildren().addAll(addBtn, deleteBtn);
         panel.getChildren().add(actionButtons);

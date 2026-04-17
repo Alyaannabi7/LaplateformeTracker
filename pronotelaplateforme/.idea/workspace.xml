@@ -5,18 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ce7f8ed7-ab26-487c-9e80-4f3c04af835b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/src/main/java/com/pronote/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pronote_fuisionv1/src/main/java/com/pronote/view/MainView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/src/main/java/com/pronote/view/ProfessorPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pronote_fuisionv1/src/main/java/com/pronote/view/ProfessorPanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/target/classes/com/pronote/controller/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/target/classes/com/pronote/database/DatabaseConnection.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/target/classes/com/pronote/main/MainApp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/target/classes/com/pronote/view/AdminPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/target/classes/com/pronote/view/MainView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/target/classes/com/pronote/view/ProfessorPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/target/classes/com/pronote/view/StudentPanel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/target/classes/com/pronote/view/TransitionView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/src/main/java/com/pronote/database/DatabaseConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pronote_fuisionv1/src/main/java/com/pronote/database/DatabaseConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/src/main/java/com/pronote/view/AdminPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/../pronote_fuisionv1/src/main/java/com/pronote/view/AdminPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/target/classes/com/pronote/view/AdminPanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/../pronote_fuisionv1/target/classes/com/pronote/view/AdminPanel.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../pronote_fuisionv1/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../pronote_fuisionv1/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../pronote_fuisionv1/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +83,7 @@
       <workItem from="1776038788088" duration="690000" />
       <workItem from="1776047427851" duration="23668000" />
       <workItem from="1776154798218" duration="19124000" />
-      <workItem from="1776265413952" duration="14262000" />
+      <workItem from="1776265413952" duration="15468000" />
     </task>
     <servers />
   </component>
