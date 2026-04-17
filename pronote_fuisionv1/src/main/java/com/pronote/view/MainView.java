@@ -31,7 +31,7 @@ public class MainView extends StackPane {
         bgView.fitHeightProperty().bind(this.heightProperty());
 
         // === TOP RED ALERT BOX ===
-        Label alertTitle = new Label("Académie Spatial La Plateforme 3.14 ");
+        Label alertTitle = new Label("Académie Spatial La Plateforme ");
         alertTitle.setStyle(
                 "-fx-text-fill: black; " +
                         "-fx-font-size: 18px; " +
@@ -46,12 +46,12 @@ public class MainView extends StackPane {
         alertBox.setAlignment(Pos.CENTER);
         alertBox.setPadding(new Insets(20, 40, 20, 40));
         alertBox.setStyle(
-                "-fx-background-color: rgba(0, 0, 30, 0.85); " +
-                        "-fx-border-color: #ff3355; " +
+                "-fx-background-color: blue; " +
+                        "-fx-border-color: rebeccapurple; " +
                         "-fx-border-width: 2; " +
                         "-fx-border-radius: 6; " +
                         "-fx-background-radius: 6; " +
-                        "-fx-effect: dropshadow(gaussian, #ff0033, 20, 0.8, 0, 0);"
+                        "-fx-effect: dropshadow(gaussian, rebeccapurple, 7, 0.8, 0, 0);"
         );
 
         // === INPUT FIELD STYLE (shared) ===
