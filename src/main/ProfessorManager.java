@@ -2,7 +2,7 @@ package main;
 
 import java.util.ArrayList;
 
-public class CourseManager {
+public class ProfessorManager {
     private ArrayList<Professor> professors = new ArrayList<>();
     
     public void addProfessor(Professor professor) {
