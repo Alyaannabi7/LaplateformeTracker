@@ -15,115 +15,64 @@ import java.util.Objects;
 
 public class ProfessorPanel extends VBox {
 
-    // Table and controller as class attributes
     private final TableView<Student> table = new TableView<>();
     private final ProfessorController controller = new ProfessorController();
+    private final Button editBtn = new Button("Edit");
+    private final Button statBtn = new Button("STAT");
 
     public ProfessorPanel() {
-        setStyle();
+        setupPanel();
         createHeader();
         createMainContent();
     }
 
-    private void setStyle() {
-        this.getStyleClass().add("panel");
+    private void setupPanel() {
+        this.getStyleClass().add("panel-prof");
         this.setPrefWidth(1180);
         this.setPrefHeight(680);
         this.setMaxWidth(1180);
         this.setSpacing(25);
         this.setPadding(new Insets(30));
         this.setAlignment(Pos.TOP_CENTER);
-        this.setStyle(
-                "-fx-background-color: rgba(8, 25, 48, 0.15); " +
-                        "-fx-padding: 25; " +
-                        "-fx-border-radius: 16;"
-        );
     }
 
     private void createHeader() {
         HBox header = new HBox();
         header.setAlignment(Pos.CENTER_LEFT);
 
+        // Left — info labels
         VBox leftSection = new VBox(4);
         leftSection.setAlignment(Pos.CENTER_LEFT);
 
         Label nomLabel    = new Label("Prénom: Lénnie");
         Label prenomLabel = new Label("Nom: Barr");
-        nomLabel.setFont(Font.font("Orbitron", FontWeight.BOLD, 14));
-        prenomLabel.setFont(Font.font("Orbitron", FontWeight.BOLD, 14));
-        nomLabel.setStyle("-fx-text-fill: #ffffff;");
-        prenomLabel.setStyle("-fx-text-fill: #ffffff;");
+        nomLabel.getStyleClass().add("info-label");
+        prenomLabel.getStyleClass().add("info-label");
 
         leftSection.getChildren().addAll(nomLabel, prenomLabel);
 
         Region leftSpacer = new Region();
         HBox.setHgrow(leftSpacer, Priority.ALWAYS);
 
+        // Center title
         Label title = new Label("Prof: Logiciel");
+        title.getStyleClass().add("neon-title");
         title.setFont(Font.font("Orbitron", FontWeight.BOLD, 28));
-        title.setStyle("-fx-text-fill: #00f7ff;");
 
         Region rightSpacer = new Region();
         HBox.setHgrow(rightSpacer, Priority.ALWAYS);
 
+        // Right section — search + menu only
         HBox rightSection = new HBox(12);
         rightSection.setAlignment(Pos.CENTER_RIGHT);
 
-        Button editBtn = new Button("Edit");
-        Button statBtn = new Button("STAT");
-
         TextField searchField = new TextField();
         searchField.setPromptText("Recherche...");
-        searchField.setPrefWidth(160);
-        searchField.setStyle(
-                "-fx-background-color: rgba(0, 20, 40, 0.85); " +
-                        "-fx-text-fill: #00f7ff; " +
-                        "-fx-prompt-text-fill: #336677; " +
-                        "-fx-border-color: #00f7ff; " +
-                        "-fx-border-width: 1.5; " +
-                        "-fx-border-radius: 4; " +
-                        "-fx-background-radius: 4; " +
-                        "-fx-font-size: 13px; " +
-                        "-fx-padding: 6 10;"
-        );
+        searchField.getStyleClass().add("field-search");
 
-        // Menu button — your custom colors kept exactly
-        Button menuBtn = new Button("← MENU");
+        Button menuBtn = new Button("MENU");
+        menuBtn.getStyleClass().add("btn-menu");
         menuBtn.setFont(Font.font("Orbitron", FontWeight.BOLD, 13));
-
-        String menuNormal =
-                "-fx-background-color: rgba(255, 107, 0, 0.25); " +
-                        "-fx-text-fill: #FF6B00; " +
-                        "-fx-border-color: #8f6; " +
-                        "-fx-border-width: 2; " +
-                        "-fx-border-radius: 6; " +
-                        "-fx-background-radius: 6; " +
-                        "-fx-padding: 10 24; " +
-                        "-fx-cursor: hand;";
-
-        String menuHovered =
-                "-fx-background-color: rgba(255, 107, 0, 0.45); " +
-                        "-fx-text-fill: #ffffff; " +
-                        "-fx-border-color: #8f6; " +
-                        "-fx-border-width: 2; " +
-                        "-fx-border-radius: 6; " +
-                        "-fx-background-radius: 6; " +
-                        "-fx-padding: 10 24; " +
-                        "-fx-cursor: hand;";
-
-        String menuExited =
-                "-fx-background-color: rgba(255, 107, 0, 0.25); " +
-                        "-fx-text-fill: #8f6; " +
-                        "-fx-border-color: #8f6; " +
-                        "-fx-border-width: 2; " +
-                        "-fx-border-radius: 6; " +
-                        "-fx-background-radius: 6; " +
-                        "-fx-padding: 10 24; " +
-                        "-fx-cursor: hand;";
-
-        menuBtn.setStyle(menuNormal);
-        menuBtn.setOnMouseEntered(e -> menuBtn.setStyle(menuHovered));
-        menuBtn.setOnMouseExited(e -> menuBtn.setStyle(menuExited));
         menuBtn.setOnAction(e -> javafx.application.Platform.runLater(() -> {
             MainApp.getScene().getStylesheets().clear();
             MainApp.getScene().getStylesheets().add(
@@ -134,7 +83,7 @@ public class ProfessorPanel extends VBox {
             MainApp.switchView(new MainView(), "EDUNAV-1 - Secure Access");
         }));
 
-        rightSection.getChildren().addAll(editBtn, statBtn, searchField, menuBtn);
+        rightSection.getChildren().addAll(searchField, menuBtn);
         header.getChildren().addAll(leftSection, leftSpacer, title, rightSpacer, rightSection);
         this.getChildren().add(header);
     }
@@ -142,15 +91,14 @@ public class ProfessorPanel extends VBox {
     private void createMainContent() {
         HBox mainContent = new HBox(30);
 
-        // Left - class list
+        // Left — class list
         VBox classesPanel = new VBox(15);
         classesPanel.setPrefWidth(280);
 
         Label classesTitle = new Label("Année");
+        classesTitle.getStyleClass().add("neon-subtitle");
         classesTitle.setFont(Font.font("Orbitron", FontWeight.BOLD, 20));
-        classesTitle.setStyle("-fx-text-fill: #00f7ff;");
 
-        // LV buttons linked to SQL query via controller
         Button lv1Btn = createClassButton("LV 1");
         Button lv2Btn = createClassButton("LV 2");
         Button lv3Btn = createClassButton("LV 3");
@@ -161,21 +109,24 @@ public class ProfessorPanel extends VBox {
 
         VBox classesList = new VBox(8, lv1Btn, lv2Btn, lv3Btn);
 
-        HBox classButtons = new HBox(15);
-        classButtons.getChildren().addAll(
-                new Button("Importer"),
-                new Button("Exporter")
-        );
 
-        classesPanel.getChildren().addAll(classesTitle, classesList, classButtons);
 
-        // Right - students table
+        classesPanel.getChildren().addAll(classesTitle, classesList);
+
+        // Right — students table
         VBox studentsPanel = new VBox(15);
         studentsPanel.setPrefWidth(860);
 
+        // ÉLÈVES title with Edit and STAT buttons
         Label studentsTitle = new Label("ÉLÈVES");
+        studentsTitle.getStyleClass().add("neon-subtitle");
         studentsTitle.setFont(Font.font("Orbitron", FontWeight.BOLD, 20));
-        studentsTitle.setStyle("-fx-text-fill: #00f7ff;");
+
+        editBtn.getStyleClass().add("btn-cyan");
+        statBtn.getStyleClass().add("btn-cyan");
+
+        HBox studentsTitleRow = new HBox(15, studentsTitle, editBtn, statBtn);
+        studentsTitleRow.setAlignment(Pos.CENTER_LEFT);
 
         table.setPrefHeight(340);
         table.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
@@ -186,7 +137,6 @@ public class ProfessorPanel extends VBox {
         TableColumn<Student, String> filiereCol = new TableColumn<>("Filière");
         TableColumn<Student, String> noteCol    = new TableColumn<>("Note");
 
-        // Bind columns to Student model fields
         nomCol.setCellValueFactory(d     -> new SimpleStringProperty(d.getValue().lastName));
         prenomCol.setCellValueFactory(d  -> new SimpleStringProperty(d.getValue().firstName));
         ageCol.setCellValueFactory(d     -> new SimpleStringProperty(d.getValue().age));
@@ -202,55 +152,26 @@ public class ProfessorPanel extends VBox {
         table.getColumns().addAll(nomCol, prenomCol, ageCol, filiereCol, noteCol);
 
         HBox studentButtons = new HBox(20);
-        studentButtons.getChildren().addAll(
-                new Button("Importer"),
-                new Button("Exporter")
-        );
+        Button importBtn = new Button("Importer");
+        Button exportBtn = new Button("Exporter");
+        importBtn.getStyleClass().add("btn-cyan");
+        exportBtn.getStyleClass().add("btn-cyan");
+        studentButtons.getChildren().addAll(importBtn, exportBtn);
 
-        studentsPanel.getChildren().addAll(studentsTitle, table, studentButtons);
+        studentsPanel.getChildren().addAll(studentsTitleRow, table, studentButtons);
 
         mainContent.getChildren().addAll(classesPanel, studentsPanel);
         this.getChildren().add(mainContent);
     }
 
-    // Delegate to controller — view stays clean
     private void loadStudents(int level) {
         table.setItems(controller.getStudentsByLevel(level));
     }
 
     private Button createClassButton(String className) {
         Button btn = new Button("▶  " + className);
-        btn.setPrefWidth(240);
+        btn.getStyleClass().add("btn-lv");
         btn.setFont(Font.font("Orbitron", FontWeight.BOLD, 13));
-
-        String normal =
-                "-fx-background-color: rgba(0, 80, 160, 0.6); " +
-                        "-fx-text-fill: #a8d8ff; " +
-                        "-fx-border-color: #0088cc; " +
-                        "-fx-border-width: 1; " +
-                        "-fx-border-radius: 6; " +
-                        "-fx-background-radius: 6; " +
-                        "-fx-alignment: CENTER_LEFT; " +
-                        "-fx-padding: 10 15; " +
-                        "-fx-cursor: hand; " +
-                        "-fx-effect: dropshadow(gaussian, #0088cc, 9, 0.3, 0, 0);";
-
-        String hovered =
-                "-fx-background-color: rgba(0, 100, 200, 0.75); " +
-                        "-fx-text-fill: #ffffff; " +
-                        "-fx-border-color: #0088cc; " +
-                        "-fx-border-width: 1.5; " +
-                        "-fx-border-radius: 6; " +
-                        "-fx-background-radius: 6; " +
-                        "-fx-alignment: CENTER_LEFT; " +
-                        "-fx-padding: 10 15; " +
-                        "-fx-cursor: hand; " +
-                        "-fx-effect: dropshadow(gaussian, #0088cc, 9, 0.3, 0, 0);";
-
-        btn.setStyle(normal);
-        btn.setOnMouseEntered(e -> btn.setStyle(hovered));
-        btn.setOnMouseExited(e -> btn.setStyle(normal));
-
         return btn;
     }
 }

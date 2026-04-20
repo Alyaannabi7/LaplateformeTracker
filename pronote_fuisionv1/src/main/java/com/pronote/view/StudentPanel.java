@@ -16,15 +16,12 @@ public class StudentPanel extends VBox {
         this.setPadding(new Insets(40));
         this.setPrefWidth(900);
 
-        // Title
         Label title = new Label("STUDENT DASHBOARD");
+        title.getStyleClass().add("student-title");
         title.setFont(Font.font("Orbitron", FontWeight.BOLD, 32));
-        title.setStyle("-fx-text-fill: #00f7ff; " +
-                "-fx-effect: dropshadow(gaussian, #00f7ff, 25, 0.9, 0, 0);");
 
-        // Placeholder
         Label sub = new Label("Coming soon...");
-        sub.setStyle("-fx-text-fill: #88ddff; -fx-font-size: 16px;");
+        sub.getStyleClass().add("student-sub");
 
         this.getChildren().addAll(title, sub);
     }

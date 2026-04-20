@@ -16,28 +16,20 @@ public class AdminPanel extends VBox {
     private final AdminController controller = new AdminController();
 
     public AdminPanel() {
-        setStyle();
+        setupPanel();
         createHeader();
         createMainContent();
         createBottomButtons();
     }
 
-    private void setStyle() {
-        this.getStyleClass().add("panel");
+    private void setupPanel() {
+        this.getStyleClass().add("panel-admin");
         this.setPrefWidth(1150);
         this.setPrefHeight(650);
         this.setMaxWidth(1150);
         this.setSpacing(30);
         this.setPadding(new Insets(35));
         this.setAlignment(Pos.TOP_CENTER);
-        this.setStyle(
-                "-fx-background-color: rgba(8, 25, 48, 0.15); " +
-                        "-fx-border-color: #00f7ff; " +
-                        "-fx-border-width: 3px; " +
-                        "-fx-border-radius: 20; " +
-                        "-fx-background-radius: 20; " +
-                        "-fx-effect: dropshadow(gaussian, #00f7ff, 35, 0.75, 0, 0);"
-        );
     }
 
     private void createHeader() {
@@ -49,29 +41,21 @@ public class AdminPanel extends VBox {
         adminInfo.setAlignment(Pos.CENTER_LEFT);
 
         Label adminTitle = new Label("ADMIN");
+        adminTitle.getStyleClass().add("neon-title-large");
         adminTitle.setFont(Font.font("Orbitron", FontWeight.BOLD, 34));
-        adminTitle.setStyle("-fx-text-fill: #00cc66; -fx-effect: dropshadow(gaussian, #00f7ff, 25, 0.9, 0, 0);");
 
         Label nameLabel = new Label("- NOM: MR");
         Label preLabel  = new Label("- PRENOM: HEY");
-        nameLabel.setStyle("-fx-text-fill: #b0f8ff; -fx-font-size: 17px;");
-        preLabel.setStyle("-fx-text-fill: #b0f8ff; -fx-font-size: 17px;");
+        nameLabel.getStyleClass().add("info-label-sub");
+        preLabel.getStyleClass().add("info-label-sub");
 
         adminInfo.getChildren().addAll(adminTitle, nameLabel, preLabel);
 
         Region spacer = new Region();
         HBox.setHgrow(spacer, Priority.ALWAYS);
 
-        // Menu button — back to login
         Button menuButton = new Button("Menu");
-        menuButton.setStyle(
-                "-fx-font-size: 18px; " +
-                        "-fx-padding: 12 40; " +
-                        "-fx-background-color: #0000cc; " +
-                        "-fx-text-fill: white; " +
-                        "-fx-border-color: #00f7ff; " +
-                        "-fx-border-width: 2;"
-        );
+        menuButton.getStyleClass().add("btn-admin-menu");
         menuButton.setOnAction(e -> javafx.application.Platform.runLater(() -> {
             MainApp.getScene().getStylesheets().clear();
             MainApp.getScene().getStylesheets().add(
@@ -90,10 +74,9 @@ public class AdminPanel extends VBox {
         HBox mainContent = new HBox(50);
         mainContent.setAlignment(Pos.CENTER);
 
-        // Left - Profs panel with DB actions
         VBox profsPanel = createManagementPanel("Profs:", true);
 
-        // Center - Search area
+        // Center
         VBox centerArea = new VBox(30);
         centerArea.setAlignment(Pos.TOP_CENTER);
 
@@ -101,20 +84,14 @@ public class AdminPanel extends VBox {
         topSpacer.setPrefHeight(40);
 
         Button searchButton = new Button("Recherche");
-        searchButton.setStyle("-fx-font-size: 22px; -fx-padding: 15 80;");
+        searchButton.getStyleClass().add("btn-search");
 
         VBox resultsArea = new VBox(10);
         resultsArea.setPrefHeight(280);
-        resultsArea.setStyle(
-                "-fx-background-color: rgba(255,255,255,0.03); " +
-                        "-fx-border-color: #00f7ff; " +
-                        "-fx-border-width: 1; " +
-                        "-fx-border-radius: 12;"
-        );
+        resultsArea.getStyleClass().add("results-area");
 
         centerArea.getChildren().addAll(topSpacer, searchButton, resultsArea);
 
-        // Right - Students panel with DB actions
         VBox studentsPanel = createManagementPanel("Eleves:", false);
 
         mainContent.getChildren().addAll(profsPanel, centerArea, studentsPanel);
@@ -124,65 +101,50 @@ public class AdminPanel extends VBox {
     private VBox createManagementPanel(String title, boolean isProf) {
         VBox panel = new VBox(12);
         panel.setPrefWidth(320);
-        panel.setStyle(
-                "-fx-background-color: rgba(8, 25, 48, 0.92); " +
-                        "-fx-padding: 25; " +
-                        "-fx-border-radius: 16;"
-        );
+        panel.getStyleClass().add("panel-dark");
 
         Label panelTitle = new Label(title);
+        panelTitle.getStyleClass().add("neon-subtitle");
         panelTitle.setFont(Font.font("Orbitron", FontWeight.BOLD, 19));
-        panelTitle.setStyle("-fx-text-fill: #00f7ff;");
         panel.getChildren().add(panelTitle);
 
-        // Input fields
         TextField firstNameField = new TextField();
         firstNameField.setPromptText("prénom");
+        firstNameField.getStyleClass().add("field-dark");
 
         TextField lastNameField = new TextField();
         lastNameField.setPromptText("nom");
+        lastNameField.getStyleClass().add("field-dark");
 
         TextField emailField = new TextField();
         emailField.setPromptText("mail");
+        emailField.getStyleClass().add("field-dark");
 
         TextField passwordField = new TextField();
         passwordField.setPromptText("mot de passe");
+        passwordField.getStyleClass().add("field-dark");
 
         TextField subjectField = new TextField();
         subjectField.setPromptText(isProf ? "matière enseignée" : "filière");
-
-        String fieldStyle =
-                "-fx-background-color: rgba(255,255,255,0.07); " +
-                        "-fx-text-fill: white; " +
-                        "-fx-prompt-text-fill: #777777;";
-
-        firstNameField.setStyle(fieldStyle);
-        lastNameField.setStyle(fieldStyle);
-        emailField.setStyle(fieldStyle);
-        passwordField.setStyle(fieldStyle);
-        subjectField.setStyle(fieldStyle);
+        subjectField.getStyleClass().add("field-dark");
 
         panel.getChildren().addAll(
                 firstNameField, lastNameField,
                 emailField, passwordField, subjectField
         );
 
-        // Feedback label
         Label feedback = new Label();
-        feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #00f7ff;");
+        feedback.getStyleClass().add("feedback-neutral");
         panel.getChildren().add(feedback);
 
-        // Action buttons
         HBox actionButtons = new HBox(15);
         actionButtons.setAlignment(Pos.CENTER);
 
         Button addBtn    = new Button("Ajouter");
         Button deleteBtn = new Button("Supprimer");
+        addBtn.getStyleClass().add("btn-add");
+        deleteBtn.getStyleClass().add("btn-delete");
 
-        addBtn.setStyle("-fx-background-color: #00cc66; -fx-text-fill: white; -fx-padding: 8 20;");
-        deleteBtn.setStyle("-fx-background-color: #ff3366; -fx-text-fill: white; -fx-padding: 8 20;");
-
-        // Add action
         addBtn.setOnAction(e -> {
             String fn  = firstNameField.getText().trim();
             String ln  = lastNameField.getText().trim();
@@ -190,9 +152,8 @@ public class AdminPanel extends VBox {
             String pw  = passwordField.getText().trim();
             String sub = subjectField.getText().trim();
 
-            // Validate fields
             if (fn.isEmpty() || ln.isEmpty() || em.isEmpty() || pw.isEmpty() || sub.isEmpty()) {
-                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #ff4466;");
+                feedback.getStyleClass().setAll("feedback-error");
                 feedback.setText("⚠️ Remplis tous les champs");
                 return;
             }
@@ -202,26 +163,20 @@ public class AdminPanel extends VBox {
                     : controller.addStudent(fn, ln, em, pw, sub);
 
             if (success) {
-                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #00cc66;");
+                feedback.getStyleClass().setAll("feedback-success");
                 feedback.setText("✅ Ajouté avec succès");
-                // Clear fields
-                firstNameField.clear();
-                lastNameField.clear();
-                emailField.clear();
-                passwordField.clear();
-                subjectField.clear();
+                firstNameField.clear(); lastNameField.clear();
+                emailField.clear(); passwordField.clear(); subjectField.clear();
             } else {
-                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #ff4466;");
+                feedback.getStyleClass().setAll("feedback-error");
                 feedback.setText("❌ Erreur lors de l'ajout");
             }
         });
 
-        // Delete action — uses email as identifier
         deleteBtn.setOnAction(e -> {
             String em = emailField.getText().trim();
-
             if (em.isEmpty()) {
-                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #ff4466;");
+                feedback.getStyleClass().setAll("feedback-error");
                 feedback.setText("⚠️ Email requis pour supprimer");
                 return;
             }
@@ -231,11 +186,11 @@ public class AdminPanel extends VBox {
                     : controller.deleteStudent(em);
 
             if (success) {
-                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #00cc66;");
+                feedback.getStyleClass().setAll("feedback-success");
                 feedback.setText("✅ Supprimé avec succès");
                 emailField.clear();
             } else {
-                feedback.setStyle("-fx-font-size: 12px; -fx-text-fill: #ff4466;");
+                feedback.getStyleClass().setAll("feedback-error");
                 feedback.setText("❌ Erreur lors de la suppression");
             }
         });
@@ -252,9 +207,8 @@ public class AdminPanel extends VBox {
 
         Button importBtn = new Button("Importer profil");
         Button exportBtn = new Button("Exporter PDF");
-
-        importBtn.setStyle("-fx-font-size: 18px; -fx-padding: 15 45;");
-        exportBtn.setStyle("-fx-font-size: 18px; -fx-padding: 15 45;");
+        importBtn.getStyleClass().add("btn-action");
+        exportBtn.getStyleClass().add("btn-action");
 
         bottomButtons.getChildren().addAll(importBtn, exportBtn);
         this.getChildren().add(bottomButtons);
