@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Orbitron';
+    src: url('../fonts/Orbitron-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Rajdhani';
+    src: url('../fonts/Rajdhani-Medium.ttf');
+}
+
 .root {
     -fx-font-family: 'Rajdhani', system-ui, sans-serif;
 }
@@ -6,7 +16,8 @@
     -fx-background-color: transparent;
 }
 
-/* Main panel style - semi-transparent with cyan neon border */
+/* ===================== PANELS ===================== */
+
 .panel {
     -fx-background-color: rgba(8, 25, 48, 0.88);
     -fx-border-color: #00f7ff;
@@ -17,29 +28,327 @@
     -fx-padding: 18px;
 }
 
-/* Neon title style */
+/* ProfessorPanel — transparent background */
+.panel-prof {
+    -fx-background-color: rgba(8, 25, 48, 0.15);
+    -fx-padding: 25;
+    -fx-border-radius: 16;
+    -fx-background-radius: 16;
+}
+
+/* AdminPanel — blue border + glow */
+.panel-admin {
+    -fx-background-color: rgba(8, 25, 48, 0.15);
+    -fx-border-color: #00f7ff;
+    -fx-border-width: 3px;
+    -fx-border-radius: 20;
+    -fx-background-radius: 20;
+    -fx-effect: dropshadow(gaussian, #00f7ff, 35, 0.75, 0, 0);
+}
+
+/* Inner dark panel — profs/students management */
+.panel-dark {
+    -fx-background-color: rgba(8, 25, 48, 0.92);
+    -fx-padding: 25;
+    -fx-border-radius: 16;
+    -fx-background-radius: 16;
+}
+
+/* Results area center admin */
+.results-area {
+    -fx-background-color: rgba(255,255,255,0.03);
+    -fx-border-color: #00f7ff;
+    -fx-border-width: 1;
+    -fx-border-radius: 12;
+    -fx-background-radius: 12;
+}
+
+/* ===================== TITLES ===================== */
+
 .neon-title {
     -fx-font-family: 'Orbitron', sans-serif;
     -fx-font-size: 28px;
     -fx-font-weight: bold;
     -fx-text-fill: #00f7ff;
-    -fx-effect: dropshadow(gaussian, #00f7ff, 25, 0.9, 0, 0);
     -fx-alignment: center;
 }
 
-/* Regular neon text */
+.neon-title-large {
+    -fx-font-family: 'Orbitron', sans-serif;
+    -fx-font-size: 34px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00cc66;
+    -fx-effect: dropshadow(gaussian, #00f7ff, 25, 0.9, 0, 0);
+}
+
+.neon-subtitle {
+    -fx-font-family: 'Orbitron', sans-serif;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00f7ff;
+}
+
 .neon-text {
     -fx-text-fill: #b0f8ff;
     -fx-font-size: 15.5px;
 }
 
-/* Red alert style */
+/* Info labels — nom/prénom prof */
+.info-label {
+    -fx-font-family: 'Orbitron', sans-serif;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+}
+
+/* Admin sub labels */
+.info-label-sub {
+    -fx-text-fill: #b0f8ff;
+    -fx-font-size: 17px;
+}
+
+/* ===================== BUTTONS ===================== */
+
+/* LV 1/2/3 buttons */
+.btn-lv {
+    -fx-font-family: 'Orbitron', sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(0, 80, 160, 0.6);
+    -fx-text-fill: #a8d8ff;
+    -fx-border-color: #0088cc;
+    -fx-border-width: 1;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-alignment: CENTER_LEFT;
+    -fx-padding: 10 15;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, #0088cc, 9, 0.3, 0, 0);
+    -fx-pref-width: 240;
+}
+
+.btn-lv:hover {
+    -fx-background-color: rgba(0, 100, 200, 0.75);
+    -fx-text-fill: #ffffff;
+    -fx-border-width: 1.5;
+}
+
+/* Menu button — amber orange + green border */
+.btn-menu {
+    -fx-font-family: 'Orbitron', sans-serif;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-background-color: rgba(255, 107, 0, 0.25);
+    -fx-text-fill: #FF6B00;
+    -fx-border-color: #88ff66;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-padding: 10 24;
+    -fx-cursor: hand;
+}
+
+.btn-menu:hover {
+    -fx-background-color: rgba(255, 107, 0, 0.45);
+    -fx-text-fill: #ffffff;
+}
+
+/* Admin menu button — blue */
+.btn-admin-menu {
+    -fx-font-size: 18px;
+    -fx-padding: 12 40;
+    -fx-background-color: #0000cc;
+    -fx-text-fill: white;
+    -fx-border-color: #00f7ff;
+    -fx-border-width: 2;
+    -fx-cursor: hand;
+}
+
+.btn-admin-menu:hover {
+    -fx-background-color: #0000ff;
+}
+
+/* Cyan bordered button — Edit, STAT, Importer, Exporter */
+.btn-cyan {
+    -fx-background-color: transparent;
+    -fx-text-fill: #00f7ff;
+    -fx-border-color: #00f7ff;
+    -fx-border-width: 1;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-padding: 6 14;
+    -fx-cursor: hand;
+}
+
+.btn-cyan:hover {
+    -fx-background-color: rgba(0, 247, 255, 0.15);
+    -fx-text-fill: #ffffff;
+}
+
+/* Login button — ENTRER */
+.btn-login {
+    -fx-background-color: rgba(0, 200, 255, 0.15);
+    -fx-text-fill: green;
+    -fx-border-color: #00f7ff;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-padding: 10;
+    -fx-effect: dropshadow(gaussian, #00f7ff, 12, 0.6, 0, 0);
+    -fx-cursor: hand;
+}
+
+/* Add button — green */
+.btn-add {
+    -fx-background-color: #00cc66;
+    -fx-text-fill: white;
+    -fx-padding: 8 20;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.btn-add:hover {
+    -fx-background-color: #00ee77;
+}
+
+/* Delete button — red */
+.btn-delete {
+    -fx-background-color: #ff3366;
+    -fx-text-fill: white;
+    -fx-padding: 8 20;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-cursor: hand;
+}
+
+.btn-delete:hover {
+    -fx-background-color: #ff5580;
+}
+
+/* Bottom action buttons */
+.btn-action {
+    -fx-font-size: 18px;
+    -fx-padding: 15 45;
+    -fx-cursor: hand;
+}
+
+/* Search button admin center */
+.btn-search {
+    -fx-font-size: 22px;
+    -fx-padding: 15 80;
+    -fx-cursor: hand;
+}
+
+/* ===================== FIELDS ===================== */
+
+/* Cyan neon fields — login + search prof */
+.field-cyan {
+    -fx-background-color: rgba(0, 20, 40, 0.85);
+    -fx-text-fill: #00f7ff;
+    -fx-prompt-text-fill: #336677;
+    -fx-border-color: #00f7ff;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-font-size: 14px;
+    -fx-padding: 10;
+}
+
+/* Search field prof header — slightly smaller */
+.field-search {
+    -fx-background-color: rgba(0, 20, 40, 0.85);
+    -fx-text-fill: #00f7ff;
+    -fx-prompt-text-fill: #336677;
+    -fx-border-color: #00f7ff;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 4;
+    -fx-background-radius: 4;
+    -fx-font-size: 13px;
+    -fx-padding: 6 10;
+    -fx-pref-width: 160;
+}
+
+/* Dark fields — admin management panels */
+.field-dark {
+    -fx-background-color: rgba(255,255,255,0.07);
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: #777777;
+}
+
+/* ===================== FORM BOX — LOGIN ===================== */
+
+.form-box {
+    -fx-background-color: rgba(0, 10, 25, 0.75);
+    -fx-border-color: #00f7ff;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 8;
+    -fx-background-radius: 8;
+    -fx-effect: dropshadow(gaussian, #00f7ff, 18, 0.5, 0, 0);
+}
+
+/* ===================== ALERT BOX — LOGIN ===================== */
+
+.alert-box {
+    -fx-background-color: blue;
+    -fx-border-color: rebeccapurple;
+    -fx-border-width: 2;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+    -fx-effect: dropshadow(gaussian, rebeccapurple, 7, 0.8, 0, 0);
+}
+
+.alert-title {
+    -fx-text-fill: black;
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+}
+
+/* ===================== FEEDBACK ===================== */
+
+.feedback-success {
+    -fx-font-size: 12px;
+    -fx-text-fill: #00cc66;
+}
+
+.feedback-error {
+    -fx-font-size: 12px;
+    -fx-text-fill: #ff4466;
+}
+
+.feedback-neutral {
+    -fx-font-size: 12px;
+    -fx-text-fill: #00f7ff;
+}
+
+/* ===================== STUDENT PANEL ===================== */
+
+.student-title {
+    -fx-font-family: 'Orbitron', sans-serif;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00f7ff;
+    -fx-effect: dropshadow(gaussian, #00f7ff, 25, 0.9, 0, 0);
+}
+
+.student-sub {
+    -fx-text-fill: #88ddff;
+    -fx-font-size: 16px;
+}
+
+/* ===================== MISC ===================== */
+
 .alert-red {
     -fx-border-color: #ff3366;
     -fx-effect: dropshadow(gaussian, #ff3366, 25, 0.75, 0, 0);
 }
 
-/* Strong glow effect */
 .glow-cyan {
     -fx-effect: dropshadow(gaussian, #00ffff, 35, 0.9, 0, 0);
+}
+
+.layout-transparent {
+    -fx-background-color: transparent;
 }

@@ -14,6 +14,8 @@ public class MainApp extends Application {
 
     @Override
     public void start(Stage stage) {
+        System.out.println("Encoding: " + java.nio.charset.Charset.defaultCharset());
+        System.out.println("file.encoding: " + System.getProperty("file.encoding"));
         primaryStage = stage;
 
         root = new StackPane();

@@ -62,6 +62,10 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>com.pronote.main.MainApp</mainClass>
+                    <options>
+                        <option>-Dfile.encoding=UTF-8</option>
+                        <option>-Dstdout.encoding=UTF-8</option>
+                    </options>
                 </configuration>
             </plugin>
         </plugins>
